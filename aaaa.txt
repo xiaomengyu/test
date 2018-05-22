@@ -1,0 +1,4 @@
+x=5
+y=6
+num=x*y
+print('num=%d' %num)
