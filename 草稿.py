@@ -5,8 +5,6 @@
 
 import this
 
-"fjfgkjfgkj"
-
 
 
 
