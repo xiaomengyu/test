@@ -1,52 +1,69 @@
-#____author:Administrator
-#date:     2018/2/16
-product_list=[
-    ('mac',  1000),
-    ('book',  100),
-    ('bike',  500),
-    ('tesla',  2000),
-    ('aaa',  10)
+# Time    : 2018/3/19 17:35
+# Author  : Jack
+# File    : 购物车.py
+# Software: PyCharm
+
+product_list = [
+    ('Mac',9000),
+    ('kindle',800),
+    ('tesla',30000),
+    ('python book',110),
+    ('bike',2000),
 ]
-shopping_list=[]
-saving=input('please input your money:')
+saving = input('please input your saving:')
+shopping_car = []
 if saving.isdigit():
-    saving=int(saving)
+    saving = int(saving)
+    # for i in product_list:
+    #     print(product_list.index(i)+1,i)
+    # for i in enumerate(product_list,1):         #后面加一个逗号和一个一是参数
+    #     print(i)
     while True:
-        # for i in product_list:
-        #     print(product_list.index(i) + 1, i)
-        # for i in enumerate(product_list):
-        #     print(i)
-        # for i in enumerate(product_list, 1):
-        #     print(i)
-        # for i, v in enumerate(product_list, 1):
-        #     print(i, v)
-        for i, v in enumerate(product_list, 1):
-            print(i, '>>>>>', v)
-        break
-    for i in range(99):
-        user_choice=input('选择要买什么。。。')
-        if user_choice.isdigit():
-            user_choice=int(user_choice)
-            if user_choice-1<len(product_list) and user_choice>=1:
-                p_item=product_list[user_choice-1]
-                if p_item[1]<=saving:           #买得起
-                    shopping_list.append(p_item)
-                    saving-=p_item[1]
-                    print('Added %s into your shopping cart,your current balance is \033[36;1m%s\033[0m'%(p_item,saving))
+        for i,v in enumerate(product_list,1):
+            print(i,'>>>>>',v)
+        choice = input('请选择购买的商品编号[退出：q]')
+        if choice.isdigit():
+            choice=int(choice)
+            if choice>0 and choice<=len(product_list):
+                p_item = product_list[choice-1]
+                if p_item[1]<saving:
+                    saving -= p_item[1]
+                    shopping_car.append(p_item)
                 else:
-                    print('\033[42;1m你的余额只剩[%s]啦。。。。\033[0m'%saving)
+                    print('余额不足，还剩%s'%saving)
+
+
+                print(p_item)
             else:
-                print('product code [%s] is not exist...'%user_choice)
-        elif user_choice=='q':                      #\033[31;1m%s\033[0m这个是给字体加颜色的，31红色，32绿色
-            print('\033[41;1m------------shopping list-------------\033[0m')
-            for i in shopping_list:
+                print('商品编码不存在')
+
+        elif choice=='q':
+            print('------------------您已购买如下商品---------------')
+            for i in shopping_car:
                 print(i)
-            print('你的余额为:%s'%(saving))
-            exit()
+            print('您还剩%s元钱'%saving)
+            break
         else:
-            print('invalid option')
-else:
-    print('请输入数字。。。。。')
+            print('invalid ')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
